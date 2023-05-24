@@ -1,0 +1,159 @@
+.matches-section {
+  width: 50vw;
+  border: 1px solid #292c2f;
+  border-radius: 5px;
+  color: white;
+  padding: 10px;
+  /* margin: 20px; */
+  height: 100%;
+}
+
+.matches-section-title {
+  display:flex;
+  justify-content: space-between;
+  /* align-items: center; */
+}
+
+.live {
+  font-weight: 700;
+  border: 0;
+  border-radius: 5px;
+  /* position:relative;
+  top: 7px; */
+}
+
+.date {
+  padding: 0;
+  background: transparent;
+  color: white;
+  border: 0;
+  /* margin-left: 55px; */
+  font-weight: bold;
+  font-size: 12px;
+}
+
+
+.match {
+  background: #292c2f;
+  list-style: none;
+  margin-bottom: 8px;
+  padding: 10px;
+  border-radius: 5px;
+  display: flex;
+}
+
+.match:hover {
+  /* opacity: 0.3; */
+  background:inherit;
+  border: 1px solid #fff;
+}
+
+/* polygon:hover ~ .match{
+  pointer-events: none;
+} */
+
+.logo-team1 {
+  height: 20px;
+  width: 20px;
+  margin-bottom: -15px;
+  margin-right: 10px;
+}
+
+.logo-team2 {
+  height: 20px;
+  width: 20px;
+  margin-bottom: -15px;
+}
+
+.name-team1 {
+  line-height: 1;
+}
+
+.name-team2 {
+  line-height: 0;
+  margin-top: 5px;
+}
+
+.score-container {
+  margin-left: auto;
+  margin-right: 20px;
+}
+
+.score-team1 {
+  line-height: 1;
+}
+
+.score-team2 {
+  line-height: 0;
+  margin-top: 5px;
+}
+
+.competition-logo {
+  /* width: 100%; */
+  min-width: 12px;
+  min-height: 12px;
+  max-height: 28px;
+  max-width: 28px;
+  text-indent: -10000px;
+  background-size: 20px 12px;
+  background-repeat: no-repeat;
+  background-position: 50%;
+  border-radius: 2px;
+}
+
+.match-time {
+  width: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.match-time span {
+  display: inline-block;
+}
+
+.blink {
+  display: inline-block;
+  animation: blinker 1s linear infinite;
+  color: red;
+  font-weight: bold;
+}
+
+@keyframes blinker {
+  50% {
+    opacity: 0;
+  }
+}
+
+.fav-star {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.active{
+  color: orangered;
+}
+
+.css-1x51dt5-MuiInputBase-input-MuiInput-input{
+  width:0 !important;
+}
+
+.MuiInputAdornment-root .css-i4bv87-MuiSvgIcon-root{
+  color: white;
+  font-size: 2rem;
+  margin-top: 5px;
+}
+
+.MuiPickersLayout-root {
+  margin-top:5px;
+}
+
+.css-cwhad8-MuiDateCalendar-root {
+  width:300px !important;
+  height: 300px !important;
+}
+
+

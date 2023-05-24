@@ -1,0 +1,40 @@
+.competitions-section {
+  width: 17vw;
+  border: 1px solid #292c2f;
+  border-radius: 5px;
+  color: white;
+  padding: 10px;
+  height: 100%;
+  min-height: 100vh;
+}
+
+.list-logo {
+  min-width: 12px;
+  min-height: 12px;
+  max-height: 18px;
+  max-width: 24px;
+  border-radius: 2px;
+}
+
+.search-input {
+  margin-top: 14px;
+  background: transparent;
+  border: none;
+  width: 173px;
+  margin-left: 9px;
+}
+
+.search-svg{
+    margin-top: -10px;
+}
+
+.list-names{
+    white-space: nowrap;
+    overflow-x:hidden;
+    margin-left: 10px;
+}
+
+.list-container{
+    display: flex;
+    margin-bottom: 5px;
+}

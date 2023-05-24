@@ -1,0 +1,15 @@
+.news-sect {
+    width: 60vw;
+    border: 1px solid #292c2f;
+    border-radius: 5px;
+    color: white;
+    height: 100%;
+    min-height: 500px;
+}
+
+.news-title{
+    width:100%;
+    padding: 10px;
+    border-bottom: 1px solid #292c2f;
+    display: flex;
+}

@@ -1,0 +1,27 @@
+.competition-overview-section {
+    width: 50vw;
+    border: 1px solid #292c2f;
+    border-radius: 5px;
+    color: white;
+    padding: 10px;
+    /* margin: 20px; */
+    height: 100%;
+}
+
+.active{
+    color:orangered;
+}
+
+.match-active{
+    color: black !important;
+    background-color: white !important;
+    border-color: black !important;
+}
+
+.match-buttons{
+    color: white;
+    background:transparent;
+    border:1px solid white;
+    border-radius:20px;
+    margin-right: 5px;
+}

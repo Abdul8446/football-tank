@@ -1,0 +1,11 @@
+.progress-reversed{
+    transform: rotate(180deg);
+}
+
+.large-progress .progress-bar{
+    background: rgb(3, 180, 26);
+}
+
+.small-progress .progress-bar{
+    background: #a39c9c;
+}

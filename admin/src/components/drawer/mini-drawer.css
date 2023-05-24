@@ -1,0 +1,23 @@
+@font-face {
+    font-family: "SFSportsNight";
+    src: url("../../fonts/SFSportsNight.ttf");
+}
+  
+
+.css-12i7wg6-MuiPaper-root-MuiDrawer-paper{
+    background-image: url('../../images/sidebar-background.png') !important;
+}
+
+.main-logo {
+    font-family: "SFSportsNight";
+    color: white;
+    background: #1d213f;
+    font-size: 30px;
+    line-height: 1;
+    padding: 8px 4px 7px 11px;
+}
+
+.css-zxdg2z{
+    height:'100vh !important';
+    background:'#EDE8E8'
+}

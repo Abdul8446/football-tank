@@ -1,0 +1,19 @@
+.cs-message-list{
+    background: #292c2f !important;
+}
+
+.cs-message-separator{
+    background: #292c2f !important;
+}
+
+.cs-typing-indicator{
+    background: #292c2f !important;
+}
+
+.cs-message__avatar{
+    margin: 0px -15px 25px 2px !important;
+}
+
+.cs-message__content {
+    padding: 0.4em 0.5em !important;
+}    

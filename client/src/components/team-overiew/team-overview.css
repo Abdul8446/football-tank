@@ -1,0 +1,95 @@
+.team-overview-section {
+    width: 50vw;
+    border: 1px solid #292c2f;
+    border-radius: 5px;
+    color: white;
+    padding: 10px;
+    /* margin: 20px; */
+    height: 100%;
+    min-height: 100vh;
+}
+
+.css-1gsv261{
+    border-color: #292c2f !important;
+}
+
+.parent-team-overview-tab .css-1h9z7r5-MuiButtonBase-root-MuiTab-root{
+    color: white !important;
+    font-weight:bold !important;
+    text-transform: none !important;
+}
+
+.parent-team-overview-tab .css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected{
+    color: orangered !important;
+}
+
+.team-overview-matches-tab .css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected{
+    color: black !important;
+    background-color: white !important;
+    border-color: black !important;
+}
+
+.team-overview-match-buttons{
+    color: white;
+    background:transparent;
+    border:1px solid white;
+    border-radius:20px;
+    margin-right: 5px;
+}
+
+.team-overview-matches-tab .css-1h9z7r5-MuiButtonBase-root-MuiTab-root{
+    color: white !important;
+    font-weight:bold !important;
+    text-transform: none !important;
+    /* color: white; */
+    background:transparent !important;
+    border:1px solid white !important;
+    border-radius:20px !important;
+    padding: 0 !important;
+    margin-right: 5px !important;
+    min-height: 35px;
+}
+
+.team-overview-stats-tab .css-1h9z7r5-MuiButtonBase-root-MuiTab-root{
+    color: white !important;
+    font-weight:bold !important;
+    /* text-transform: none !important; */
+    border-radius:20px !important;
+    background:transparent !important;
+    border:1px solid white !important;
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+    margin-right: 5px !important;
+    min-height: 33px;
+    max-width:370px !important;
+}
+
+.team-overview-stats-tab .css-1h9z7r5-MuiButtonBase-root-MuiTab-root.Mui-selected{
+    color: black !important;
+    background-color: white !important;
+    border-color: black !important;
+}
+
+.seeall{
+    border: 1px solid #aaa;
+    border-radius: 7px;
+    display: flex;
+    font-size: 14px;
+    justify-content: center;
+    /* margin: 10px; */
+    padding: 10px;
+}
+
+.css-1e6y48t-MuiButtonBase-root-MuiButton-root{
+    color: white !important;
+    text-transform: none !important;
+}
+
+.css-6hp17o-MuiList-root-MuiMenu-list{
+    padding-top: 0 !important;
+    padding-bottom: 0 !important;
+}
+
+.css-1ka5eyc-MuiPaper-root-MuiMenu-paper-MuiPopover-paper{
+    background-color: #292c2f !important;
+}

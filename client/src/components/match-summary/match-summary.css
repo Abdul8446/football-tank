@@ -1,0 +1,13 @@
+.summary-active{
+    color: black !important;
+    background-color: white !important;
+    border-color: black !important;
+}
+
+.summary-buttons{
+    color: white;
+    background:transparent;
+    border:1px solid white;
+    border-radius:20px;
+    margin-right: 5px;
+}

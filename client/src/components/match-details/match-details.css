@@ -1,0 +1,14 @@
+.active{
+    color:orangered;
+}
+
+.match-details-section {
+    width: 50vw;
+    border: 1px solid #292c2f;
+    border-radius: 5px;
+    color: white;
+    padding: 10px;
+    /* margin: 20px; */
+    height: 100%;
+}
+
