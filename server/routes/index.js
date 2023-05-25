@@ -15,7 +15,7 @@ const upload = multer({storage:storage})
 
 // connect to MongoDB database
 mongoose
-  .connect(process.env.MONGODB_CONNECTION_STRING, {
+  .connect("mongodb+srv://velvetstore:lceQfQJ1SCBrD2fj@cluster0.dxv6kr8.mongodb.net/test", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
