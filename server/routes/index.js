@@ -11,11 +11,11 @@ const { createPaymentIntent, activatePremiumSubscription } = require("../Control
 const storage = multer.memoryStorage()
 const upload = multer({storage:storage})
 
-
+    
 
 // connect to MongoDB database
 mongoose
-  .connect("mongodb://127.0.0.1:27017/football-tank", {
+  .connect(process.env.MONGODB_CONNECTION_STRING, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
