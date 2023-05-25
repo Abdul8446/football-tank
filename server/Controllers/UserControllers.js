@@ -22,7 +22,7 @@ const s3 = new S3Client({
     region:bucketRegion,
 })
 
-const getHomepage = async (req,res,next)=>{
+module.exports.getHomepage = async (req,res,next)=>{
     try {        
         const user=req?.user
         let features = await Features.find() 
@@ -36,7 +36,7 @@ const getHomepage = async (req,res,next)=>{
     }
 }
 
-const getNavbar = async (req,res)=>{
+module.exports.getNavbar = async (req,res)=>{
     try {
         let navMatches = await axios.get(
           "https://prod-public-api.livescore.com/v1/api/app/date/soccer/" +
@@ -49,7 +49,7 @@ const getNavbar = async (req,res)=>{
       }
 }
 
-const addProfilePicture = async (req,res)=>{
+module.exports.addProfilePicture = async (req,res)=>{
     try {
         const {userid} = req.body
         const file = req.file
@@ -77,7 +77,7 @@ const addProfilePicture = async (req,res)=>{
     }
 }
 
-const changeProfilePicture = async (req,res)=>{
+module.exports.changeProfilePicture = async (req,res)=>{
     try {
         const {userid} = req.body
         const file = req.file
@@ -114,7 +114,7 @@ const changeProfilePicture = async (req,res)=>{
     }
 }
 
-const deleteProfilePicture= async (req,res)=>{
+module.exports.deleteProfilePicture= async (req,res)=>{
     try {
         const userId = req.params.id
         const user = await User.findById(userId)
@@ -132,7 +132,7 @@ const deleteProfilePicture= async (req,res)=>{
     }
 }
 
-const getImageUrl = async (req,res)=>{
+module.exports.getImageUrl = async (req,res)=>{
     try {
         const user = await User.findById(req.query.userId)
         if(!user.pic){
@@ -151,7 +151,7 @@ const getImageUrl = async (req,res)=>{
     }
 }
 
-const verifyOldPassword = async (req,res)=>{
+module.exports.verifyOldPassword = async (req,res)=>{
     try {
         const {userId, password} = req.query
         const user = await User.findById(userId)
@@ -167,7 +167,7 @@ const verifyOldPassword = async (req,res)=>{
     }
 }
 
-const updateProfile = async (req,res)=>{
+module.exports.updateProfile = async (req,res)=>{
     try {     
         if(req.body.newPassword){
             const newPassword = await bcrypt.hash(req.body.newPassword, 10);
@@ -188,7 +188,7 @@ const updateProfile = async (req,res)=>{
     }
 }
 
-const addOrRemoveFromFavoriteMatches = async (req,res) => {
+module.exports.addOrRemoveFromFavoriteMatches = async (req,res) => {
     const matchObj={
         competitionId:req.body.match.competition.competitionId,
         competition:req.body.match.competition,
@@ -235,7 +235,7 @@ const addOrRemoveFromFavoriteMatches = async (req,res) => {
     }
 }
 
-const removeFinishedFromFavoriteMatches = async (req,res) => {
+module.exports.removeFinishedFromFavoriteMatches = async (req,res) => {
     try {
         if(req.body.finishedMatchIds.length==0){
             res.json({message:'No matches to remove'})
@@ -271,7 +271,7 @@ const removeFinishedFromFavoriteMatches = async (req,res) => {
     }
 }
 
-const addOrRemoveFromFavoriteCompetitions = async (req,res)=>{
+module.exports.addOrRemoveFromFavoriteCompetitions = async (req,res)=>{
     try {
         const competitionFind = await User.find({_id:req.body.userId,"favorites.competitions.competitionId":req.body.competition.competitionId})
         if(competitionFind.length!==0){
@@ -290,7 +290,7 @@ const addOrRemoveFromFavoriteCompetitions = async (req,res)=>{
     }
 }
 
-const addOrRemoveFromFavoriteTeams = async (req,res)=>{
+module.exports.addOrRemoveFromFavoriteTeams = async (req,res)=>{
     try {
         const teamFind = await User.find({_id:req.body.userId,"favorites.teams.teamId":req.body.team.teamId})
         if(teamFind.length!=0){
@@ -309,18 +309,3 @@ const addOrRemoveFromFavoriteTeams = async (req,res)=>{
     }
 }
 
-
-module.exports = {
-    getNavbar,
-    getHomepage,
-    addProfilePicture,
-    getImageUrl,
-    changeProfilePicture,
-    deleteProfilePicture,
-    verifyOldPassword,
-    updateProfile,
-    addOrRemoveFromFavoriteMatches,
-    removeFinishedFromFavoriteMatches,
-    addOrRemoveFromFavoriteCompetitions,
-    addOrRemoveFromFavoriteTeams,
-}   
