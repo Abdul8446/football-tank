@@ -25,7 +25,7 @@ app.use(cors({
 }))
 
 
-app.use('/', indexRouter);
+app.use('/api', indexRouter);
 app.use('/admin', adminRouter);
 
 

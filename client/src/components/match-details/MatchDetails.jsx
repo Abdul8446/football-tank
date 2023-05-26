@@ -37,7 +37,9 @@ function MatchDetails({ matchUrl }) {
 
 
   useEffect(()=>{
-    if(userData!==null  && userData.premiumSubscription.activated===true){
+    console.log(userData,'user   ddata')
+    if(userData!==null  && userData?.premiumSubscription?.activated===true){
+      console.log('userdata is not null')
         if(features.matchStats.premium===true){
             setPastOrLiveMenu(prevMenu => [...prevMenu, "Stats"])
         }else{
