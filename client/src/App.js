@@ -87,6 +87,7 @@ function App() {
     axios.get(`${process.env.REACT_APP_SERVER_URL}`,{withCredentials:true}).then((res) => {
       if(cookies.jwt){
         if(res.status===200){
+          console.log(res.data,'response=======================')
           setFeatures(res.data.features[0])
           setUserData(res.data.user)
           getImageUrl(res.data.user._id)

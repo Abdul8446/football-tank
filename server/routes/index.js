@@ -15,7 +15,7 @@ const upload = multer({storage:storage})
 
 // connect to MongoDB database
 mongoose
-  .connect("mongodb+srv://velvetstore:lceQfQJ1SCBrD2fj@cluster0.dxv6kr8.mongodb.net/test", {
+  .connect("mongodb+srv://velvetstore:lceQfQJ1SCBrD2fj@cluster0.dxv6kr8.mongodb.net/football-tank", {
     useNewUrlParser: true,
     useUnifiedTopology: true,
   })
@@ -23,9 +23,9 @@ mongoose
   .catch((error) => console.error(error));
 
  
-/* GET home page. */
+/* GET home page. */    
 router.get("/",checkUser,getHomepage);
-
+              
 router.get('/fetch-matches',fetchMatches)
 
 router.get("/competitions-list",competitionsList);

@@ -26,6 +26,7 @@ const getHomepage = async (req,res,next)=>{
     try {        
         const user=req?.user
         let features = await Features.find() 
+        console.log(features)
         if(user){
             res.status(200).json({user:user,features:features});   
         }else{
