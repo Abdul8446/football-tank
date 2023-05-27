@@ -53,6 +53,7 @@ const handleErrors = (err) => {
 };
 
 module.exports.login = async (req, res, next) => {
+  console.log('admin  loogin')
   try {
     const { name, email, password } = req.body;
     
