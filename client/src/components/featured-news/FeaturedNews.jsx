@@ -10,7 +10,7 @@ function FeaturedNews() {
     
     const fetchNews=async ()=>{
       try {
-        let res=await axios.get(`${process.env.REACT_APP_SERVER_URL}/featured-news`)
+        let res=await axios.get(`api/featured-news`)
         if(res.data?.data?.items){
           setFeaturedNews(res.data.data.items)
         }else{
