@@ -4,7 +4,7 @@ import Homepage from "./pages/homepage/Homepage";
 import React, { useEffect, useState } from "react";
 import { FeaturesContext, UserContext ,cookieContext} from "./contexts/userContext";
 import "react-toastify/dist/ReactToastify.css"
-import axios from 'axios'
+import axios from '../../axios/axios'
 import {useCookies} from "react-cookie"
 import {ToastContainer,toast} from 'react-toastify'
 import MatchDetailsPage from "./pages/matchdetailspage/MatchDetailsPage";
@@ -64,7 +64,7 @@ function App() {
   }  
   
   const getImageUrl= async (userId)=>{
-    const result = await axios.get(`${process.env.REACT_APP_SERVER_URL}/get-image-url`,{
+    const result = await axios.get(`/get-image-url`,{
         params:{userId:userId}    
     })
     if(result.data.imageNotFound){
@@ -84,7 +84,7 @@ function App() {
       }
     });
 
-    axios.get(`${process.env.REACT_APP_SERVER_URL}`,{withCredentials:true}).then((res) => {
+    axios.get(`/`,{withCredentials:true}).then((res) => {
       if(cookies.jwt){
         if(res.status===200){
           console.log(res.data,'response=======================')
@@ -147,7 +147,7 @@ function App() {
 
   const activateSubscription = async ()=>{
     try {
-      const result = await axios.put(`${process.env.REACT_APP_SERVER_URL}/activate-premium-subscription`,{userId:userData._id})
+      const result = await axios.put(`/activate-premium-subscription`,{userId:userData._id})
       setUserData(result.data)
       setLoadingPremiumActivation(false)
       toast.success('Premium Activated')

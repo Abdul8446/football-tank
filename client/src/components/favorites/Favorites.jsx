@@ -3,7 +3,7 @@ import './favorites.css'
 import { UserContext } from '../../contexts/userContext';
 import { Box, Tab, Tooltip } from '@mui/material';
 import {ToastContainer,toast} from 'react-toastify'
-import axios from 'axios'
+import axios from '../../axios/axios'
 import { TabContext, TabList, TabPanel } from '@mui/lab';
 import { useNavigate } from 'react-router-dom';
 import timestamp from '../../scripts/defaultTimeStamp';
@@ -27,7 +27,7 @@ function Favorites({matches}) {
 
   const addOrRemoveFromFavorites = async (match, e) => {
     const result = await axios.put(
-      `${process.env.REACT_APP_SERVER_URL}/add-or-remove-from-favorite-matches`,
+      `/add-or-remove-from-favorite-matches`,
       { match: match, userId: userData._id }
     );
     setUserData(result.data.updatedUser);
@@ -36,7 +36,7 @@ function Favorites({matches}) {
   const addOrRemoveFromFavoriteCompetitions= async (competition)=>{
     try {
         const result = await axios.put(
-        `${process.env.REACT_APP_SERVER_URL}/add-or-remove-from-favorite-competitions`,
+        `/add-or-remove-from-favorite-competitions`,
         { competition:competition, userId: userData._id }                                   
         );
         setUserData(result.data.updatedUser);
@@ -48,7 +48,7 @@ function Favorites({matches}) {
   const addOrRemoveFromFavoriteTeams= async (team)=>{
     try {
         const result = await axios.put(
-        `${process.env.REACT_APP_SERVER_URL}/add-or-remove-from-favorite-teams`,
+        `/add-or-remove-from-favorite-teams`,
         { team:team, userId: userData._id }
         );
         setUserData(result.data.updatedUser);
@@ -77,7 +77,7 @@ function Favorites({matches}) {
         );
         try {
             const result = await axios.put(
-              `${process.env.REACT_APP_SERVER_URL}/remove-finished-from-favorite-matches`,
+              `/remove-finished-from-favorite-matches`,
               { finishedMatchIds: finishedMatches, userId: userData._id }
             );  
             if(result.data.message!=='No matches to remove'){
@@ -91,7 +91,7 @@ function Favorites({matches}) {
   
   const fetchMatches = () => {
     axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/fetch-matches`,{params:{defaultTimeStamp:timestamp}})
+      .get(`/fetch-matches`,{params:{defaultTimeStamp:timestamp}})
       .then((res) => {
         setFavoriteMatches(res.data.Stages);
       })
@@ -134,7 +134,7 @@ function Favorites({matches}) {
 
   const goToCompetitionOverview=(competition,compName)=>{
     const competitionUrl=`${process.env.REACT_APP_COMPETITION_URL}/${competition}/5.30?MD=1`
-    axios.get(`${process.env.REACT_APP_SERVER_URL}/competition-overview`,{
+    axios.get(`/competition-overview`,{
         params:{url:competitionUrl}
     }).then(res=>{
         navigate(`/competition-overview/${compName}`,{state:{overview:res.data}})
@@ -148,7 +148,7 @@ function Favorites({matches}) {
     teamName=teamName.replace(' ','-')
     const teamOverviewUrl=`${process.env.REACT_APP_TEAMOVERVIEW_URL}/${teamName}/${teamId}/overview.json?`
     try {     
-        axios.get(`${process.env.REACT_APP_SERVER_URL}/team-overview`,{
+        axios.get(`/team-overview`,{
                     params:{url:teamOverviewUrl}
             }).then(res=>{
                 navigate(`/team-overview/${teamName}`,{state:{teamOverview:res.data}})

@@ -2,7 +2,7 @@ import React, { useState, useEffect, useContext, useRef } from "react";
 import { convertToIST, convertToDate } from "./convertToIST";
 import "./match-details.css";
 import MatchSummary from "../match-summary/MatchSummary";
-import axios from "axios";
+import axios from "../../axios/axios";
 import CircularProgress from "@mui/material/CircularProgress";
 import Box from "@mui/material/Box";
 import MatchInfo from "../match-info/MatchInfo";
@@ -139,7 +139,7 @@ function MatchDetails({ matchUrl }) {
 
   const fetchMatchDetails = () => {
     axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/match-details`, {
+      .get(`/match-details`, {
         params: {
           url: matchUrl,
         },
@@ -156,7 +156,7 @@ function MatchDetails({ matchUrl }) {
   const getInfo = () => {
     const infoUrl = matchUrl.slice(0, -6) + "/info.json?";
     axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/match-info`, {
+      .get(`/match-info`, {
         params: {
           url: infoUrl,
         },
@@ -178,7 +178,7 @@ function MatchDetails({ matchUrl }) {
   const getStats = () => {
     const statsUrl = matchUrl.slice(0, -6) + "/stats.json?";
     axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/match-stats`, {
+      .get(`/match-stats`, {
         params: {
           url: statsUrl,
         },
@@ -200,7 +200,7 @@ function MatchDetails({ matchUrl }) {
   const getLineUps= async ()=>{
     try {
         const lineUpsUrl = matchUrl.slice(0, -6) + "/lineups.json?"
-        const result = await axios.get(`${process.env.REACT_APP_SERVER_URL}/line-ups`,{
+        const result = await axios.get(`/line-ups`,{
             params:{url:lineUpsUrl}
         })
         result.data.pageProps.initialEventData && setLineUpsData(result.data.pageProps.initialEventData.event)
@@ -218,7 +218,7 @@ function MatchDetails({ matchUrl }) {
   const getH2h= async ()=>{
     try {
         const h2hUrl = matchUrl.slice(0, -6) + "/h2h.json?"
-        const result = await axios.get(`${process.env.REACT_APP_SERVER_URL}/h2h`,{
+        const result = await axios.get(`/h2h`,{
             params:{url:h2hUrl}
         })
         result.data.pageProps.initialEventData && setH2hData(result.data.pageProps.initialEventData.event.headToHead)

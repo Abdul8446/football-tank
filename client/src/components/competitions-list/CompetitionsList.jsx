@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState } from "react";
 import "./competitions-list.css";
-import axios from "axios";
+import axios from "../../axios/axios";
 import { useNavigate } from "react-router-dom";
 import { toast, ToastContainer } from "react-toastify";
 import { FeaturesContext } from "../../contexts/userContext";
@@ -31,7 +31,7 @@ function CompetitionsList() {
   const goToCompetitionOverview=(competition,compName)=>{
     const competitionUrl=`${process.env.REACT_APP_COMPETITION_URL}/${competition}/5.30?MD=1`
     try {
-      axios.get(`${process.env.REACT_APP_SERVER_URL}/competition-overview`,{
+      axios.get(`/competition-overview`,{
           params:{url:competitionUrl}
       }).then(res=>{
           navigate(`/competition-overview/${compName}`,{state:{overview:res.data}})
@@ -42,7 +42,7 @@ function CompetitionsList() {
   }
 
   const fetchData = () => {
-    axios.get(`${process.env.REACT_APP_SERVER_URL}/competitions-list`).then((res) => {
+    axios.get(`/competitions-list`).then((res) => {
       setFullStages(res.data)
       if (fullList) {
         setCompetitions(res.data);
@@ -56,7 +56,7 @@ function CompetitionsList() {
 
   const getSubCompetitions = (subCompetition) => {
     axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/sub-competitions`, {
+      .get(`/sub-competitions`, {
         params: { subCompetition: subCompetition },
       })
       .then((res) => {

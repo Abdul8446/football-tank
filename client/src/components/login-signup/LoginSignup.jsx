@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
 import './login-signup.css'
-import axios from 'axios'
+import axios from '../../axios/axios'
 import {ToastContainer,toast} from 'react-toastify'
 import {useCookies} from "react-cookie"
 import { UserContext } from '../../contexts/userContext'
@@ -61,7 +61,7 @@ function LoginSignup(props) {
         e.preventDefault()
         try {
                 const loginOrSignup=login?'login':'signup'
-                const url=`${process.env.REACT_APP_SERVER_URL}/${loginOrSignup}`
+                const url=`/${loginOrSignup}`
                 const {data} = await axios.post(url,{...formData},{withCredentials:true})
                 if(data){
                     if(data.errors){

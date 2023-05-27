@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useState } from 'react'
 import './team-overview.css'
 import { convertToDate, convertToIST } from '../match-details/convertToIST';
-import axios from 'axios'
+import axios from '../../axios/axios'
 import { useNavigate } from 'react-router-dom';
 import { getTimeAgo } from '../news-section/getTimeAgo';
 import { Box, Button, CircularProgress, Menu, MenuItem, Tab, Tabs, Tooltip } from '@mui/material';
@@ -56,7 +56,7 @@ function TeamOverview({details}) {
   const addOrRemoveFromFavoriteTeams= async (team)=>{
     try {
         const result = await axios.put(
-        `${process.env.REACT_APP_SERVER_URL}/add-or-remove-from-favorite-teams`,
+        `/add-or-remove-from-favorite-teams`,
         { team:team, userId: userData._id }
         );
         setUserData(result.data.updatedUser);
@@ -162,7 +162,7 @@ function TeamOverview({details}) {
     const newStatsUrl = menu.type===undefined && `${process.env.REACT_APP_TEAMOVERVIEW_MENU_URL}${href.slice(0,-1)}.json?`
     menu==='matches' && fixtures.length===0 && setMatchesLoading(true);menu==='tables' && tables.length===0 && setTablesLoading(true)
     menu==='news' && news.length===0 && setNewsLoading(true);menu==='stats' && stats.length===0 && setStatsLoading(true)
-    const result = await axios.get(`${process.env.REACT_APP_SERVER_URL}/get-all-team-details`,{
+    const result = await axios.get(`/get-all-team-details`,{
         params:{fixturesUrl:fixturesUrl,resultsUrl:resultsUrl,tablesUrl:tablesUrl,newsUrl:newsUrl,statsUrl:statsUrl,newStatsUrl:newStatsUrl}}
     )
     if(result.data.fixtures){
@@ -188,7 +188,7 @@ function TeamOverview({details}) {
   const getStatsData= async (menu,href)=>{
     const goalsUrl=`${process.env.REACT_APP_TEAMOVERVIEW_MENU_URL}${href.slice(0,-1)}.json?`
     menu==='goals' && goals.length===0 && setGoalsLoading(true)
-    const result = await axios.get(`${process.env.REACT_APP_SERVER_URL}/get-all-player-stats`,{
+    const result = await axios.get(`/get-all-player-stats`,{
         params:{goalsUrl:goalsUrl}}
     )
     if(result.data.goals){

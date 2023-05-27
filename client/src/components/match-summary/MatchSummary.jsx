@@ -1,7 +1,7 @@
 import React, { useState ,useEffect} from 'react'
 import './match-summary.css'
 import {assistIcon, goal,ownGoal, penaltyGoal, penaltyMiss, redCard, yellowCard} from './icons'
-import axios from 'axios'
+import axios from '../../axios/axios'
 
 function MatchSummary({details}) {
     const [incidents1, setIncidents1] = useState([])
@@ -66,7 +66,7 @@ function MatchSummary({details}) {
     }, []);
 
     const getCommentaries=()=>{
-        axios.get(`${process.env.REACT_APP_SERVER_URL}/commentary`,{
+        axios.get(`/commentary`,{
             params: {
                 matchId:details.id
             }

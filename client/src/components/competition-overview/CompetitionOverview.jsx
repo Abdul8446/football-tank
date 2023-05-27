@@ -2,7 +2,7 @@ import React, { useContext, useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import './competition-overview.css'
 import { isToday, isTomorrow } from './timestamp'
-import axios from 'axios'
+import axios from '../../axios/axios'
 import { Tooltip } from '@mui/material'
 import { UserContext } from '../../contexts/userContext'
 import {ToastContainer,toast} from 'react-toastify'
@@ -29,7 +29,7 @@ function CompetitionOverview({details}) {
     const addOrRemoveFromFavoriteCompetitions= async (competition)=>{
         try {
             const result = await axios.put(
-            `${process.env.REACT_APP_SERVER_URL}/add-or-remove-from-favorite-competitions`,
+            `/add-or-remove-from-favorite-competitions`,
             { competition:competition, userId: userData._id }
             );
             setUserData(result.data.updatedUser);
@@ -52,7 +52,7 @@ function CompetitionOverview({details}) {
         teamName=teamName.replace(' ','-')
         const teamOverviewUrl=`${process.env.REACT_APP_TEAMOVERVIEW_URL}/${teamName}/${teamId}/overview.json?`
         try {     
-            axios.get(`${process.env.REACT_APP_SERVER_URL}/team-overview`,{
+            axios.get(`/team-overview`,{
                         params:{url:teamOverviewUrl}
                 }).then(res=>{
                     navigate(`/team-overview/${teamName}`,{state:{teamOverview:res.data}})

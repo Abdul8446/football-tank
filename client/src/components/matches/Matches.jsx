@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useContext } from "react";
-import axios from "axios";
+import axios from "../../axios/axios";
 import "./matches.css";
 import dates from "./dates";
 import generateTimeStamp from "./generateTimeStamp";
@@ -67,7 +67,7 @@ function Matches() {
 
   const addOrRemoveFromFavorites = async (match, e) => {
     const result = await axios.put(
-      `${process.env.REACT_APP_SERVER_URL}/add-or-remove-from-favorite-matches`,
+      `/add-or-remove-from-favorite-matches`,
       { match: match, userId: userData._id }
     );
     setUserData(result.data.updatedUser);
@@ -91,7 +91,7 @@ function Matches() {
       (element) => !notFinishedMatches.includes(element)
     );
     const result = await axios.put(
-      `${process.env.REACT_APP_SERVER_URL}/remove-finished-from-favorite-matches`,
+      `/remove-finished-from-favorite-matches`,
       { finishedMatchIds: finishedMatches, userId: userData._id }
     );  
     setUserData(result.data.updatedUser);
@@ -176,7 +176,7 @@ function Matches() {
 
   const matchesLive = () => {
     axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/fetch-matches`,{params:{defaultTimeStamp:timestamp}})
+      .get(`/fetch-matches`,{params:{defaultTimeStamp:timestamp}})
       .then((res) => {
         const liveMatches = res.data.Stages.map((item) => {
           const Events = item.Events.filter(
@@ -204,7 +204,7 @@ function Matches() {
       timeStamp = generateTimeStamp(day, date, month);
     }
     axios
-      .get(`${process.env.REACT_APP_SERVER_URL}/fetch-matches`, {
+      .get(`/fetch-matches`, {
         params: {
           timeStamp: timeStamp,
         },
@@ -265,7 +265,7 @@ function Matches() {
 
   const fetchMatches = async () => {
     try {
-      let result= await axios.get(`${process.env.REACT_APP_SERVER_URL}/fetch-matches`,{params:{defaultTimeStamp:timestamp}})
+      let result= await axios.get(`/fetch-matches`,{params:{defaultTimeStamp:timestamp}})
       setMatches(result.data.Stages);
       setLoading(false);
     } catch (error) {

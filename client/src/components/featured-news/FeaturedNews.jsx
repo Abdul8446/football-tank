@@ -1,6 +1,6 @@
 import React, { useContext, useEffect } from 'react'
 import './featured-news.css'
-import axios from 'axios'
+import axios from '../../axios/axios'
 import { Skeleton } from '@mui/material'
 import { ToastContainer, toast } from 'react-toastify'
 import { FeaturesContext } from '../../contexts/userContext'
@@ -10,7 +10,7 @@ function FeaturedNews() {
     
     const fetchNews=async ()=>{
       try {
-        let res=await axios.get(`api/featured-news`)
+        let res=await axios.get(`/featured-news`)
         if(res.data?.data?.items){
           setFeaturedNews(res.data.data.items)
         }else{

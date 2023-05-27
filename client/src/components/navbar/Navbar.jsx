@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useState, lazy} from "react";
 import "./navbar.css";
-import axios from "axios";
+import axios from "../../axios/axios";
 import { Box, Modal} from "@mui/material";
 import AccountCircleSharpIcon from '@mui/icons-material/AccountCircleSharp';
 import LoginSignup from "../login-signup/LoginSignup";
@@ -36,7 +36,7 @@ function Navbar({paymentUrl,setPaymentUrl}) {
   
   const subscribePremium = async ()=>{
     try {
-      const result = await axios.post(`${process.env.REACT_APP_SERVER_URL}/create-payment-intent`,{userId:userData._id},{withCredentials:true})
+      const result = await axios.post(`/create-payment-intent`,{userId:userData._id},{withCredentials:true})
       setClientSecret(result.data.clientSecret)
     } catch (error) {
       toast(error.message)
@@ -62,7 +62,7 @@ function Navbar({paymentUrl,setPaymentUrl}) {
   }
 
   useEffect(() => {
-    axios.get(`${process.env.REACT_APP_SERVER_URL}/navbar`,{params:{defaultTimeStamp:timestamp}}).then((res) => {
+    axios.get(`/navbar`,{params:{defaultTimeStamp:timestamp}}).then((res) => {
       setNavMatches(res.data.navMatches.Stages);
     });
   }, []);

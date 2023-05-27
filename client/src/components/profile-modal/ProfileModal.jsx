@@ -4,7 +4,7 @@ import { LoadingButton, TabContext, TabList, TabPanel } from '@mui/lab'
 import { UserContext } from '../../contexts/userContext';
 import { CameraAlt, Close, Delete,Edit, Done, ModeEdit} from '@mui/icons-material';
 import './profile-modal.css'
-import axios from 'axios'
+import axios from '../../axios/axios'
 import { ToastContainer, toast } from 'react-toastify';
 
 function ProfileModal() {
@@ -69,7 +69,7 @@ function ProfileModal() {
                 setChangePasswordLoading(false)
             }else{
                 try {     
-                    let result = await axios.put(`${process.env.REACT_APP_SERVER_URL}/update-profile`,{
+                    let result = await axios.put(`/update-profile`,{
                             newPassword:newPassword,
                             userId:userData._id})
                     if(result.data.passwordUpdated){
@@ -94,7 +94,7 @@ function ProfileModal() {
                 setNameError('Name must not start with a space')
             }else{
                 try {     
-                    let result = await axios.put(`${process.env.REACT_APP_SERVER_URL}/update-profile`,{
+                    let result = await axios.put(`/update-profile`,{
                             newName:name,
                             userId:userData._id})
                     if(result.data.nameUpdated){
@@ -115,7 +115,7 @@ function ProfileModal() {
                 setEmailEditLoading(false)
             }else{
                 try {     
-                    let result = await axios.put(`${process.env.REACT_APP_SERVER_URL}/update-profile`,{
+                    let result = await axios.put(`/update-profile`,{
                             newEmail:email,
                             userId:userData._id})
                     if(result.data.emailUpdated){
@@ -135,7 +135,7 @@ function ProfileModal() {
                 setPhoneEditLoading(false)
             }else{
                 try {     
-                    let result = await axios.put(`${process.env.REACT_APP_SERVER_URL}/update-profile`,{
+                    let result = await axios.put(`/update-profile`,{
                             newPhone:phone,
                             userId:userData._id})
                     if(result.data.phoneUpdated){
@@ -154,7 +154,7 @@ function ProfileModal() {
 
     const verifyOldPassword= async ()=>{
         setPasswordLoading(true)
-        const response = await axios.get(`${process.env.REACT_APP_SERVER_URL}/verify-old-password`,{
+        const response = await axios.get(`/verify-old-password`,{
             params:{
                 userId:userData._id,
                 password:oldPassword
@@ -176,7 +176,7 @@ function ProfileModal() {
         const data = new FormData()
             data.append('file',pics)
             data.append('userid',userData._id)
-            const result = await axios.post(`${process.env.REACT_APP_SERVER_URL}/add-profile-picture`,data,{
+            const result = await axios.post(`/add-profile-picture`,data,{
                 headers:{
                     'Content-Type':'multipart/form-data'
                 }
@@ -190,7 +190,7 @@ function ProfileModal() {
         const data = new FormData()
             data.append('file',pics)
             data.append('userid',userData._id)
-            const result = await axios.put(`${process.env.REACT_APP_SERVER_URL}/change-profile-picture`,data,{
+            const result = await axios.put(`/change-profile-picture`,data,{
                 headers:{
                     'Content-Type':'multipart/form-data'
                 }
@@ -202,7 +202,7 @@ function ProfileModal() {
     const deletePicture = async ()=>{
         setProfileLoading(true) 
         try {
-            const {data}=await axios.delete(`${process.env.REACT_APP_SERVER_URL}/delete-profile-picture/${userData._id}`)
+            const {data}=await axios.delete(`/delete-profile-picture/${userData._id}`)
             setUserData(data)
             setProfilePic(null)
             setProfileLoading(false)
